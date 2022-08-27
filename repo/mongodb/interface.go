@@ -13,4 +13,5 @@ type RepoInterface interface {
 	GetUser(ctx context.Context, userID string) (model.User, error)
 	GetMenuByID(ctx context.Context, menuID string) (model.Menu, error)
 	CheckUserCredentials(ctx context.Context, user model.User) (bool, string, error)
+	InsertUserMenu(ctx context.Context, insertData model.InsertUserMenu) error
 }

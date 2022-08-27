@@ -15,6 +15,7 @@ func newRouter(usecase usecase.UsecaseInterface) *mux.Router {
 	r.HandleFunc("/register", handlerHttp.Register).Methods("POST")
 	r.HandleFunc("/login", handlerHttp.Login).Methods("POST")
 	r.HandleFunc("/profile/{id:[a-zA-Z0-9]+}", handlerHttp.GetProfile).Methods("GET")
+	r.HandleFunc("/usermenu", handlerHttp.InsertUserMenu).Methods("POST")
 
 	return r
 }
