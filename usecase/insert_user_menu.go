@@ -6,6 +6,6 @@ import (
 	"github.com/zephyrzth/wdiet-be/model"
 )
 
-func (uc *usecase) InsertUserMenu(ctx context.Context, userMenu model.UserMenu) error {
-	return uc.mongoRepo.InsertUserMenu(ctx, userMenu)
+func (uc *usecase) InsertUserMenu(ctx context.Context, insertData model.InsertUserMenu) error {
+	return uc.mongoRepo.InsertUserMenu(ctx, insertData)
 }

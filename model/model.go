@@ -94,3 +94,9 @@ type Recommendation struct {
 	Name     string  `json:"name"`
 	Duration float32 `json:"amount"`
 }
+
+type InsertUserMenu struct {
+	UserID   string `json:"id"`
+	MenuID   string `json:"menu_id"`
+	Quantity int    `json:"quantity"`
+}

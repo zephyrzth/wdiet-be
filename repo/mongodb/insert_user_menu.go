@@ -10,18 +10,18 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func (r *repo) InsertUserMenu(ctx context.Context, userMenu model.UserMenu) error {
-	objectUserID, _ := primitive.ObjectIDFromHex(userMenu.UserID)
-	objectMenuID, _ := primitive.ObjectIDFromHex(userMenu.MenuID)
+func (r *repo) InsertUserMenu(ctx context.Context, insertData model.InsertUserMenu) error {
+	objectUserID, _ := primitive.ObjectIDFromHex(insertData.UserID)
+	objectMenuID, _ := primitive.ObjectIDFromHex(insertData.MenuID)
 
 	data := UserMenuBSON{
 		MenuID:    objectMenuID,
-		Quantity:  userMenu.Quantity,
+		Quantity:  insertData.Quantity,
 		Timestamp: time.Now(),
 	}
 
-	filter := bson.D{{"_id", objectUserID}}
-	update := bson.D{{"$push", bson.D{{"menus", data}}}}
+	filter := bson.D{{Key: "_id", Value: objectUserID}}
+	update := bson.D{{Key: "$push", Value: bson.D{{Key: "menus", Value: data}}}}
 
 	_, err := r.mongoDB.Collection(collectionUsers).UpdateOne(ctx, filter, update)
 	if err != nil {
