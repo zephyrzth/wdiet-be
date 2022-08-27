@@ -1,0 +1,18 @@
+# docker data
+.docker
+
+# goland
+.idea
+
+# vscode
+.vscode
+
+# vim swap
+*.swp
+
+# binaries
+bin
+
+config.json
+
+.DS_Store 
