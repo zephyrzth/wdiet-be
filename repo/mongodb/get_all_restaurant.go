@@ -11,7 +11,7 @@ import (
 func (r *repo) GetAllRestaurant(ctx context.Context) ([]model.Restaurants, error) {
 	cur, err := r.mongoDB.Collection(collectionRestaurants).Find(ctx, bson.M{})
 	if err != nil {
-		fmt.Println("[repo][GetRestaurant] error find data:", err)
+		fmt.Println("[repo][GetAllRestaurant] error find data:", err)
 		return []model.Restaurants{}, err
 	}
 	defer cur.Close(ctx)
@@ -19,7 +19,7 @@ func (r *repo) GetAllRestaurant(ctx context.Context) ([]model.Restaurants, error
 	var data []model.Restaurants
 
 	if err = cur.All(ctx, &data); err != nil {
-		fmt.Println("[repo][GetRestaurant] error in cursor:", err)
+		fmt.Println("[repo][GetAllRestaurant] error in cursor:", err)
 		return []model.Restaurants{}, err
 	}
 
