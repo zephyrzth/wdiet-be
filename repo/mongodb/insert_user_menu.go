@@ -14,14 +14,15 @@ func (r *repo) InsertUserMenu(ctx context.Context, insertData model.InsertUserMe
 	objectUserID, _ := primitive.ObjectIDFromHex(insertData.UserID)
 	objectMenuID, _ := primitive.ObjectIDFromHex(insertData.MenuID)
 
+	timeNow := time.Now()
 	data := UserMenuBSON{
 		MenuID:    objectMenuID,
 		Quantity:  insertData.Quantity,
-		Timestamp: time.Now(),
+		Timestamp: time.Date(timeNow.Year(), timeNow.Month(), timeNow.Day(), 0, 0, 0, 0, time.UTC),
 	}
 
 	filter := bson.D{{Key: "_id", Value: objectUserID}}
-	update := bson.D{{Key: "$push", Value: bson.D{{Key: "menus", Value: data}}}}
+	update := bson.D{{Key: "$addToSet", Value: bson.D{{Key: "menus", Value: data}}}}
 
 	_, err := r.mongoDB.Collection(collectionUsers).UpdateOne(ctx, filter, update)
 	if err != nil {

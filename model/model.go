@@ -100,3 +100,7 @@ type InsertUserMenu struct {
 	MenuID   string `json:"menu_id"`
 	Quantity int    `json:"quantity"`
 }
+
+type InsertUserMenuWarning struct {
+	Message string `json:"message"`
+}

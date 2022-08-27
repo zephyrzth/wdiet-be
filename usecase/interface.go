@@ -12,5 +12,5 @@ type UsecaseInterface interface {
 	Register(ctx context.Context, user model.User) (string, error)
 	GetProfile(ctx context.Context, userID string) (model.User, error)
 	Login(ctx context.Context, user model.User) (bool, string, error)
-	InsertUserMenu(ctx context.Context, insertData model.InsertUserMenu) error
+	InsertUserMenu(ctx context.Context, insertData model.InsertUserMenu) (model.InsertUserMenuWarning, error)
 }
