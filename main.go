@@ -2,13 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"time"
 
 	mRepo "github.com/zephyrzth/wdiet-be/repo/mongodb"
 	mUsecase "github.com/zephyrzth/wdiet-be/usecase"
-	"github.com/zephyrzth/wdiet-be/utils"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -39,11 +37,7 @@ func main() {
 	// init usecase
 	usecase := mUsecase.New(mongoDBRepo)
 
-	restoID := "6309cf4b76fa949ae0b554ab"
-	data, err := mongoDBRepo.GetRestaurantByID(ctx, restoID)
-
-	fmt.Println("THE DATA", utils.PrettyPrint(data), err)
-
 	r := newRouter(usecase)
+
 	http.ListenAndServe(":8080", r)
 }

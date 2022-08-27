@@ -4,11 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
-func (h *handler) GetAllRestaurant(w http.ResponseWriter, r *http.Request) {
+func (h *handler) GetRestaurantByID(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	restaurantID := vars["id"]
+
 	statusCode := http.StatusOK
-	data, err := h.usecase.GetAllRestaurant(r.Context())
+	data, err := h.usecase.GetRestaurantByID(r.Context(), restaurantID)
 	if err != nil {
 		statusCode = http.StatusInternalServerError
 		w.WriteHeader(statusCode)
@@ -17,7 +22,7 @@ func (h *handler) GetAllRestaurant(w http.ResponseWriter, r *http.Request) {
 
 	jsonData, err := json.Marshal(data)
 	if err != nil {
-		fmt.Println("[handler][GetAllRestaurant] fail parse json")
+		fmt.Println("[handler][GetRestaurantByID] fail parse json")
 		statusCode = http.StatusInternalServerError
 		w.WriteHeader(statusCode)
 		return
