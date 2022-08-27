@@ -11,4 +11,5 @@ type UsecaseInterface interface {
 	GetAllRestaurant(ctx context.Context) ([]model.Restaurants, error)
 	Register(ctx context.Context, user model.User) (string, error)
 	GetProfile(ctx context.Context, userID string) (model.User, error)
+	Login(ctx context.Context, user model.User) (bool, string, error)
 }

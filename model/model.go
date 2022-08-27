@@ -67,6 +67,7 @@ type User struct {
 	ID              string           `bson:"_id,omitempty" json:"id"`
 	Name            string           `bson:"name,omitempty" json:"name"`
 	Email           string           `bson:"email,omitempty" json:"email"`
+	Password        string           `bson:"password,omitempty" json:"password"`
 	Age             int              `bson:"age,omitempty" json:"age"`
 	Gender          string           `bson:"gender,omitempty" json:"gender"`
 	Height          float32          `bson:"height,omitempty" json:"height"`

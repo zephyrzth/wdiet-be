@@ -13,6 +13,7 @@ func newRouter(usecase usecase.UsecaseInterface) *mux.Router {
 	r.HandleFunc("/restaurants", handlerHttp.GetAllRestaurant).Methods("GET")
 	r.HandleFunc("/restaurants/{id:[a-zA-Z0-9]+}", handlerHttp.GetRestaurantByID).Methods("GET")
 	r.HandleFunc("/register", handlerHttp.Register).Methods("POST")
+	r.HandleFunc("/login", handlerHttp.Login).Methods("POST")
 	r.HandleFunc("/profile/{id:[a-zA-Z0-9]+}", handlerHttp.GetProfile).Methods("GET")
 
 	return r
