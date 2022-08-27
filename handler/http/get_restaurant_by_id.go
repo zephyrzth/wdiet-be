@@ -29,5 +29,6 @@ func (h *handler) GetRestaurantByID(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(statusCode)
+	w.Header().Add("Content-Type", "application/json")
 	w.Write(jsonData)
 }
