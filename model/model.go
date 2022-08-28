@@ -45,8 +45,7 @@ type Restaurants struct {
 }
 
 type Menu struct {
-	ID           string        `bson:"_id,omitempty" json:"id"`
-	RestaurantID string        `bson:"restaurant_id,omitempty" json:"restaurant_id"`
+	ID           string        `bson:"id,omitempty" json:"id"`
 	Title        string        `bson:"title,omitempty" json:"title"`
 	Price        int32         `bson:"price,omitempty" json:"price"`
 	Description  string        `bson:"description,omitempty" json:"description"`
