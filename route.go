@@ -25,6 +25,9 @@ func newRouter(usecase usecase.UsecaseInterface) *mux.Router {
 func wrapHandler(handler func(w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		enableCors(&w)
+		if (*r).Method == "OPTIONS" {
+			return
+		}
 		handler(w, r)
 	}
 }
